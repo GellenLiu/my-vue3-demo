@@ -11,12 +11,24 @@ import { useRoute, useRouter, onBeforeRouteLeave, onBeforeRouteUpdate } from 'vu
 
 // ref创建响应式，类似data（）里面return的数据
 let msg = ref(0);
+
+/* ts指定类型
+import { ref } from 'vue'
+import type { Ref } from 'vue'
+
+const year: Ref<string | number> = ref('2020')
+
+year.value = 2020 // 成功！
+
+*/
+
 // 通过value获取
 msg.value = 1;
 function changeMsg() {
   msg.value++;
 }
 // 类似ref，用于创建响应式对象；ref用于简单数据类型，ref要加.value取值
+// ref是getter/setter  reactive是Proxy代理
 let obj = reactive({
     name:'juejin',
     age:3
